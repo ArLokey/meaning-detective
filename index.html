@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#ede9fa">
+  <meta name="description" content="Meaning Detective: a classroom activity exploring how music, images and captions shape interpretation. Record your three impressions and compare your own findings.">
+  <title>Meaning Detective · Classroom Activity</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-icon" aria-hidden="true">
+        <svg width="1em" height="1em" viewBox="0 0 32 32" focusable="false">
+          <path fill="#fff1dc" d="M4 16 4.6 5.1Q4.7 3.5 6.1 4.3l6.5 3.8a16 16 0 0 1 6.8 0l6.5-3.8q1.4-.8 1.5.8L28 16c1.6 8.1-3.7 12-12 12S2.4 24.1 4 16Z"/>
+          <path fill="#f2a39b" d="m6.4 7 .1 5.2 3.5-3Zm19.2 0-.1 5.2-3.5-3Z"/>
+          <g fill="#352440">
+            <ellipse cx="10.8" cy="16.5" rx="1.4" ry="1.8"/>
+            <ellipse cx="21.2" cy="16.5" rx="1.4" ry="1.8"/>
+            <path d="M14.2 19q1.8-1.2 3.6 0L16 21Z"/>
+          </g>
+          <path fill="none" stroke="#714d5e" stroke-width="1.3" stroke-linecap="round" d="m3 18 4 1m-4 3 4-1m22-3-4 1m4 3-4-1"/>
+        </svg>
+      </span>
+      <span>MEANING DETECTIVE</span>
+    </div>
+    <button id="back-home" class="text-button" type="button" hidden>Activity home</button>
+  </header>
+  <main>
+    <section id="welcome" class="welcome" aria-labelledby="welcome-title">
+      <div class="welcome-grid">
+        <div class="welcome-copy"><div class="eyebrow">YOUR CLASSROOM CHALLENGE</div><h1 id="welcome-title">Same sound.<br><span>Different story.</span></h1><p class="lead">Can an image or a caption change the way you hear a song?</p><p class="translation" lang="zh-CN">情绪侦探：观察自己的理解如何变化。</p></div>
+        <img class="welcome-art" src="assets/emotion-detective.png" alt="A friendly detective wearing headphones studies three different emotions with a magnifying glass." width="1672" height="941">
+      </div>
+      <div class="entry-panel">
+        <div class="evidence-strip" aria-label="Activity sequence"><span>♫ Listen</span><b>+</b><span>◉ Watch</span><b>+</b><span>“ ” Read</span></div>
+        <p class="entry-instruction">Watch and listen to the classroom presentation.<br>Record your impressions here. Continue when the presenters say so.</p>
+        <p class="translation" lang="zh-CN">看投屏、听音乐，在手机上作答；跟随主持人提示进入下一轮。</p>
+        <button id="start-activity" class="button primary" type="button">Start my notebook</button>
+        <p id="start-hint" class="help" role="status">3 rounds · Around 12 minutes · No correct emotion</p>
+      </div>
+      <p class="fine">No sign-in or name needed. Your notes stay in this browser.</p>
+    </section>
+
+    <section id="student" class="student-workspace" hidden aria-label="Your activity notebook">
+      <div class="eyebrow">YOUR DETECTIVE NOTEBOOK / 你的观察记录</div>
+      <p id="resume-note" class="resume-note" hidden role="status"></p>
+      <div id="student-progress" class="student-progress" aria-label="Activity progress"></div>
+      <div id="student-round">
+        <div id="student-round-label" class="pill"></div>
+        <h1 id="student-title"></h1>
+        <p id="student-instruction" class="lead"></p>
+        <p id="student-instruction-zh" class="translation" lang="zh-CN"></p>
+        <fieldset class="mood-fieldset"><legend>What emotion do you notice?<span lang="zh-CN">你感受到什么情绪？</span></legend><div id="mood-options" class="mood-grid"></div></fieldset>
+        <fieldset class="confidence-fieldset"><legend>How sure are you?<span lang="zh-CN">你有多确定？</span></legend><div id="confidence-options" class="confidence-options"></div></fieldset>
+        <div class="student-actions"><button id="save-answer" class="button primary" type="button" disabled>Save my impression</button><p class="help">Choose what you feel. There is no correct emotion.</p></div>
+        <div id="answer-saved" class="answer-saved" hidden role="status"><strong>Impression saved.</strong><p>Wait for the presenters before moving on.<br><span lang="zh-CN">等主持人提示后，再进入下一步。</span></p><button id="student-next" class="button secondary" type="button">Continue when told</button></div>
+      </div>
+      <div id="student-results" hidden>
+        <div class="pill">YOUR FINDINGS</div><h1>Did the meaning shift?</h1><p id="result-summary" class="lead"></p>
+        <div id="result-cards" class="result-cards"></div>
+        <div class="reflection-box"><label for="reflection">What changed your reading—or kept it the same?</label><p class="translation" lang="zh-CN">是声音、画面、字幕，还是自己的经历影响了你？</p><textarea id="reflection" rows="3" maxlength="500" placeholder="At first I felt… Then I noticed…"></textarea><button id="copy-findings" class="small-button" type="button">Copy my findings</button><p id="copy-status" class="help" role="status"></p></div>
+        <div class="discussion-note"><strong>Share a clue, if you would like.</strong><p>You can explain why your answer changed or stayed the same. Someone else may interpret the clip differently.</p><p class="translation" lang="zh-CN">你可以自愿分享理由；不同理解都值得讨论。</p></div>
+        <button id="to-context" class="button primary" type="button">Explore the context</button>
+      </div>
+      <div id="student-context" hidden>
+        <div class="pill">THE BIGGER PICTURE</div><h1>A trend has a context.</h1>
+        <div class="context-intro"><span class="song-title" lang="zh-CN">落泪</span><div><strong>Falling Tears</strong><p>康熙 (Kangxi) &amp; TOYOKI<br>A Chinese-language song</p></div></div>
+        <p class="lead">A caption can tell a new story. It does not automatically explain the song.</p>
+        <div class="learning-card"><strong>Sound + image + words + your experience</strong><p>We actively interpret a message. Different people may read the same clip differently.</p><p>The title “落泪” means “shedding tears.” It does not require every listener to feel sad.</p></div>
+        <div class="learning-card"><strong>Discuss one respectful choice.</strong><p>How could you share this trend while keeping its cultural context visible?</p><p class="translation" lang="zh-CN">可以讨论：说明歌曲来源、区分情景文案与歌词翻译、避免把一个短视频当成整个中国文化。</p></div>
+        <p class="fine">The added situational caption in this activity is not a translation of the lyrics. See the presenters’ slides for the specific video and remix credits.</p>
+        <button id="back-to-results" class="button secondary" type="button">Back to my findings</button>
+      </div>
+      <button id="reset-student" class="text-button reset-button" type="button">Start a new notebook</button>
+      <p id="storage-note" class="storage-note">Your choices stay on this device. This page does not collect class-wide votes.</p>
+    </section>
+    <noscript><p class="noscript-note">Please enable JavaScript to record your choices. You can also write three impressions on paper and follow the classroom presentation.</p></noscript>
+  </main>
+  <footer><span>MEANING DETECTIVE</span><span>Listen. Notice. Reconsider.</span></footer>
+</body>
+</html>
